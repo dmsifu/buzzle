@@ -1,0 +1,19 @@
+.tutorial{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .board{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border: 1px solid black;
+        width: 500px;
+        height: 500px;
+    
+        .square{
+            border-radius: 15px;
+            width: 250px;
+            height: 250px;
+        }
+    }
+}
