@@ -1,19 +1,40 @@
+@mixin animation($animation, $duration, $iterations, $delay, $fillmode) {
+    animation: $animation $duration linear $iterations;
+    animation-delay: $delay;
+    animation-fill-mode: $fillmode;
+}
+
+@mixin keyframe($name) {
+    @keyframes #{$name} {
+        @content
+    }
+}
+
 .tutorial{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    background-color: #dddfee;
 
     .board{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        border: 1px solid black;
+        border: 2px solid rgb(255, 255, 255);
         width: 500px;
         height: 500px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     
         .square{
             border-radius: 15px;
             width: 250px;
             height: 250px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            @include keyframe(slide){
+                from{transform: translate(0px);}
+                to{transform: translate(100px);}
+            }
+            //@include animation(slide, 1s, 1, 0s, forward)
         }
     }
 }
