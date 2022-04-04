@@ -1,0 +1,20 @@
+.navbar{
+    position: absolute;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: white;
+    
+    h1{
+        justify-self: center;
+        align-self: center;
+        font-size: 4.5rem;
+    }
+    li{
+        justify-self: end;
+        align-self: center;
+        list-style: none;
+        margin-right: 7%;
+        font-size: 1.5rem;
+    }
+}
