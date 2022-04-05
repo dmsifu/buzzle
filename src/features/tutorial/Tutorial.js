@@ -1,28 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux'
+import Board from './Board'
 import './Tutorial.scss'
-import { moveBlock } from './tutorialSlice'
 
-function Tutorial() {
-
-    const board = useSelector(state => state.tutorial.board)
-    const dispatch = useDispatch()
+function Tutorial() {  
 
   return (
-    <section className='tutorial'>
-      
-      <div className='board'>
-          {board.map((element)=>(
-            element.map((square)=>{
-              if(square.color === 'none'){
-                return <div className='square' key={square.id} onClick={()=>dispatch(moveBlock(square.id))} style={{ backgroundColor: square.color, opacity: 0 }}></div>
-              }
-              else{
-                return <div className='square' key={square.id} onClick={()=>dispatch(moveBlock(square.id))} style={{ backgroundColor: square.color }}></div>
-              }
-            })
-          ))}
+    <div className='tutorial'>
+      <div className='game-details'>
+        <h2>Match this target board</h2>
+        <div className='target-board'>
+          <Board isTargetBoard={true}/>
+        </div>
+        <h2>Score</h2>
       </div>
-    </section>
+      <div className='board'>
+        <Board isTargetBoard={false} />
+      </div>
+    </div>
   )
 }
 

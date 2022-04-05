@@ -10,34 +10,22 @@
     }
 }
 
-.tutorial{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(227deg, #3d4043, #a8b1bd);
-    background-size: 400% 400%;
-    @include keyframe(fadebackground){
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @include animation(fadebackground, 14s, infinite, 0s, none);
-
-    .board{
+@mixin createboard($isTarget){
+    @if $isTarget{
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        border: 4px solid rgb(73, 66, 66);
+        grid-template-columns: 1fr 1fr 1fr;
+        border: 1px solid rgb(73, 66, 66);
         background: rgba(206, 195, 195, 0.3);
-        width: 405px;
-        height: 405px;
+        width: 125px;
+        height: 125px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-    
+        margin-top: -15%;
+
         .square{
             border: 1px solid rgb(86, 83, 83, .5);
-            border-radius: 5px;
-            width: 200px;
-            height: 200px;
+            border-radius: 1px;
+            width: 40px;
+            height: 40px;
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             @include keyframe(slide){
                 from{transform: translate(0px);}
@@ -45,5 +33,68 @@
             }
             //@include animation(slide, 1s, 1, 0s, forward)
         }
+    }
+    @else{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border: 4px solid rgb(73, 66, 66);
+        background: rgba(206, 195, 195, 0.3);
+        width: 605px;
+        height: 605px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+        .square{
+            border: 1px solid rgb(86, 83, 83, .5);
+            border-radius: 5px;
+            width: 200px;
+            height: 200px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            cursor: pointer;
+            @include keyframe(slide){
+                from{transform: translate(0px);}
+                to{transform: translate(100px);}
+            }
+            //@include animation(slide, 1s, 1, 0s, forward)
+        }
+    }
+}
+
+.tutorial{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(227deg, #3d4043, #a8b1bd);
+    background-size: 400% 400%;
+    column-gap: 5%;
+
+    @include keyframe(fadebackground){
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @include animation(fadebackground, 9s, infinite, 0s, none);
+
+    .game-details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 25%;
+        row-gap: 10%;
+
+        .target-board{
+            @include createboard($isTarget: true)
+        }
+
+        h2{
+            font-size: 2.7rem;
+            color: white;
+        }
+    }
+
+    .board{
+        @include createboard($isTarget: false)
     }
 }

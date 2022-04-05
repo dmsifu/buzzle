@@ -1,23 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { create2x2, findEmptySpace, findCurrentBlock, canMove } from "../../utils/index.js"
+import { generateBoard, findEmptySpace, findclickedBlock, canMove } from "../../utils/index.js"
+
+let board = generateBoard(3)
 
 export const tutorialSlice = createSlice({
     name: 'tutorial',
     initialState: {
-        board: create2x2(),
+        board: board,
+        targetBoard: board,
+        score: 0,
         hasTutorialEnded: false
     },
     reducers: {
         moveBlock: (state, action) => {
             let emptySpace = findEmptySpace(state.board)
-            let currentBlock = findCurrentBlock(state.board, action.payload)
-            let temp = {...state.board[currentBlock[0]][currentBlock[1]]}
+            let clickedBlock = findclickedBlock(state.board, action.payload)
+            let temp = {...state.board[clickedBlock[0]][clickedBlock[1]]}
 
-            if(canMove(emptySpace, currentBlock)){
-                state.board[currentBlock[0]][currentBlock[1]] = {...state.board[emptySpace[0]][emptySpace[1]]}
+            if(canMove(emptySpace, clickedBlock)){
+                state.board[clickedBlock[0]][clickedBlock[1]] = {...state.board[emptySpace[0]][emptySpace[1]]}
                 state.board[emptySpace[0]][emptySpace[1]] =  temp
+
             }
-        }   
+        },
     }
 })
 
