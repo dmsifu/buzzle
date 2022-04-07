@@ -1,11 +1,11 @@
 import Navbar from "./features/Nav/Navbar";
-import Tutorial from "./features/tutorial/Tutorial";
+import Game from "./features/Game/Game";
 
 function App() {
   return (
     <div>
       <Navbar/>
-      <Tutorial/>
+      <Game/>
     </div>
   );
 }

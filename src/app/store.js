@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import tutorialReducer from '../features/tutorial/tutorialSlice'
+import gameReducer from '../features/Game/gameSlice'
 
 export const store = configureStore({
   reducer: {
-    tutorial: tutorialReducer
+    game: gameReducer
   },
 })
