@@ -9,9 +9,10 @@ export const gameSlice = createSlice({
     initialState: {
         board: initialBoard,
         targetBoard: initialTargetBoard,
+        gameText: "Can you match the boards?",
         currentBoardSize: 9,
         currentGameScore: 0,
-        totalGlobalScore: 0,
+        totalGlobalScore: 6,
     },
     reducers: {
         moveBlock: (state, action) => {
@@ -38,10 +39,26 @@ export const gameSlice = createSlice({
                     state.totalGlobalScore+=1
                 }
             }
-        }, 
+        },
+        changeGameText: (state, action) =>{
+            switch (action.payload) {
+                case 1:
+                    state.gameText = "Nice!"
+                    break;
+                case 2:
+                    state.gameText = "Score 7 for a reward :)"
+                    break;
+                case 5:
+                    state.gameText = "7 is a lucky number!"
+                    break;
+                default:
+                    state.gameText = "Can you match the boards?"
+                    break;
+            }
+        }
     }
 })
 
-export const { moveBlock, changeBoard } = gameSlice.actions
+export const { moveBlock, changeGameText } = gameSlice.actions
 
 export default gameSlice.reducer
