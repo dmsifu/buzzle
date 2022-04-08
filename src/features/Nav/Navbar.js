@@ -5,7 +5,7 @@ function Navbar() {
     <ul className="navbar">
         <li></li>
         <h1>Buzzle</h1>
-        <li>Home</li>
+        <li>Level Select</li>
     </ul>
   )
 }

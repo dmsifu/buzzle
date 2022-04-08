@@ -1,3 +1,3 @@
-# Blockular
+# Buzzle
 
-Blockular is a block puzzle game where you have to slide blocks into the target pattern
+Buzzle is a block puzzle game where you have to slide blocks to match a target pattern. Score enough points to advance into more complex levels! 😏

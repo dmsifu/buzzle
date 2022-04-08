@@ -10,7 +10,8 @@ export const gameSlice = createSlice({
         board: initialBoard,
         targetBoard: initialTargetBoard,
         currentBoardSize: 9,
-        score: 0,
+        currentGameScore: 0,
+        totalGlobalScore: 0,
     },
     reducers: {
         moveBlock: (state, action) => {
@@ -33,7 +34,8 @@ export const gameSlice = createSlice({
                 if(correctSquarePlacement === state.currentBoardSize){
                     state.board = generateBoard(3)
                     state.targetBoard = randomizeBoard(state.board)
-                    state.score+=1
+                    state.currentGameScore+=1
+                    state.totalGlobalScore+=1
                 }
             }
         }, 
