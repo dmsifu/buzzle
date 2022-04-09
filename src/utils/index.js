@@ -26,31 +26,13 @@ export function randomizeBoard(oldBoard){
     return board
 }
 
-export function generateBoard(size){
+export function generateBoard(size, score){
     let board = []
-
-    switch (size) {
-        case 3:
-            for (let i = 0; i < 3; i++) {
-                board.push([generateSquare(),generateSquare(),generateSquare()])
-            }
-            break;
-        case 4:
-            for (let i = 0; i < 4; i++) {
-                board.push([generateSquare(),generateSquare(),generateSquare(),generateSquare()])
-            }
-            break;
-        case 5:
-            for (let i = 0; i < 5; i++) {
-                board.push([generateSquare(),generateSquare(),generateSquare(),generateSquare(),generateSquare()])
-            }
-            break;
-    
-        default:
-            for (let i = 0; i < 3; i++) {
-                board.push([generateSquare(),generateSquare(),generateSquare()])
-            }
-            break;
+    for (let i = 0; i < size; i++) {
+        board.push([])
+        for (let j = 0; j < size; j++) {
+            board[i].push(generateSquare(score)) 
+        }
     }
 
     let randomRowIndex = Math.floor(Math.random()*size)
@@ -63,8 +45,8 @@ export function generateBoard(size){
     return board;
 }
 
-function generateSquare(){
-    let colors = [darkgrey, blue]
+function generateSquare(score){
+    let colors = score > 1 ? [darkgrey, blue, watermelon] : [darkgrey, blue]
     return {
         id: nanoid(),
         color: colors[Math.floor(Math.random()*colors.length)],
@@ -92,7 +74,7 @@ export function findClickedBlock(currentBoard, id){
     }
 }
 
-//computes the distance between block/empty space and if its 1 then they are adjacent 
+//computes the distance between block/empty space and if its 1 then they are adjacent
 export function canMove(emptySpaceLocation, blockLocation){
     if( Math.abs(emptySpaceLocation[0] - blockLocation[0]) + Math.abs(emptySpaceLocation[1] - blockLocation[1]) === 1){
         return true

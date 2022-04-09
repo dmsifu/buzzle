@@ -12,7 +12,8 @@ export const gameSlice = createSlice({
         gameText: "Can you match the boards?",
         currentBoardSize: 9,
         currentGameScore: 0,
-        totalGlobalScore: 6,
+        totalGlobalScore: 0,
+        isOnLevelSelect: true
     },
     reducers: {
         moveBlock: (state, action) => {
@@ -33,7 +34,7 @@ export const gameSlice = createSlice({
                     }
                 }
                 if(correctSquarePlacement === state.currentBoardSize){
-                    state.board = generateBoard(3)
+                    state.board = generateBoard(Math.sqrt(state.currentBoardSize), state.currentGameScore)
                     state.targetBoard = randomizeBoard(state.board)
                     state.currentGameScore+=1
                     state.totalGlobalScore+=1
@@ -41,24 +42,38 @@ export const gameSlice = createSlice({
             }
         },
         changeGameText: (state, action) =>{
-            switch (action.payload) {
-                case 1:
-                    state.gameText = "Nice!"
-                    break;
-                case 2:
-                    state.gameText = "Score 7 for a reward :)"
-                    break;
-                case 5:
-                    state.gameText = "7 is a lucky number!"
-                    break;
-                default:
-                    state.gameText = "Can you match the boards?"
-                    break;
+            if(state.totalGlobalScore < 7) {
+                switch (action.payload) {
+                    case 1:
+                        state.gameText = "Nice!"
+                        break;
+                    case 2:
+                        state.gameText = "Score 7 for a reward :)"
+                        break;
+                    case 3:
+                        state.gameText = "Red seems like a neat color"
+                        break;
+                    case 5:
+                        state.gameText = "7 is a lucky number!"
+                        break;
+                    case 7:
+                        state.gameText = "New levels unlocked!"
+                        break;
+                    default:
+                        state.gameText = "Can you match the boards?"
+                        break;
+                }
             }
+            else{ 
+                state.gameText = "Can you match the boards?"
+            }
+        },
+        setIsOnLevelSelect: (state, action) =>{
+            state.isOnLevelSelect = action.payload
         }
     }
 })
 
-export const { moveBlock, changeGameText } = gameSlice.actions
+export const { moveBlock, changeGameText, setIsOnLevelSelect } = gameSlice.actions
 
 export default gameSlice.reducer

@@ -1,0 +1,21 @@
+@mixin animation($animation, $duration, $iterations, $delay, $fillmode) {
+    animation: $animation $duration linear $iterations;
+    animation-delay: $delay;
+    animation-fill-mode: $fillmode;
+}
+
+@mixin keyframe($name) {
+    @keyframes #{$name} {
+        @content
+    }
+}
+.app{
+    background: linear-gradient(227deg, #3d4043, #a8b1bd);
+    background-size: 400% 400%;
+    @include keyframe(fadebackground){
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @include animation(fadebackground, 9s, infinite, 0s, none);
+}

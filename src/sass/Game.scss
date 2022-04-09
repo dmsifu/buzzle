@@ -1,15 +1,3 @@
-@mixin animation($animation, $duration, $iterations, $delay, $fillmode) {
-    animation: $animation $duration linear $iterations;
-    animation-delay: $delay;
-    animation-fill-mode: $fillmode;
-}
-
-@mixin keyframe($name) {
-    @keyframes #{$name} {
-        @content
-    }
-}
-
 @mixin styleboard($isTarget){
     @if $isTarget{
         display: grid;
@@ -27,11 +15,6 @@
             width: 40px;
             height: 40px;
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-            @include keyframe(slide){
-                from{transform: translate(0px);}
-                to{transform: translate(100px);}
-            }
-            //@include animation(slide, 1s, 1, 0s, forward)
         }
     }
     @else{
@@ -62,16 +45,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(227deg, #3d4043, #a8b1bd);
-    background-size: 400% 400%;
     column-gap: 5%;
-
-    @include keyframe(fadebackground){
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @include animation(fadebackground, 9s, infinite, 0s, none);
 
     .game-details{
         display: flex;

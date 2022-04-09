@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { AnimatePresence, motion } from 'framer-motion'
-import { nanoid } from 'nanoid'
+import { changeGameText } from './gameSlice'
+import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import { nanoid } from 'nanoid'
 import Board from './Board'
 import TargetBoard from './TargetBoard'
-import './Game.scss'
-import { changeGameText } from './gameSlice'
+import '../../sass/Game.scss'
 
 function Game() {
   const dispatch = useDispatch()
@@ -14,26 +14,28 @@ function Game() {
 
   useEffect(() => {
     dispatch(changeGameText(score))
-  }, [score])
+  }, [dispatch, score])
   
 
   return (
     <div className='game'>
       <div className='game-details'>
-        <h2>{gameText}</h2>
+        <motion.h2 
+          key={nanoid()}
+          animate={{ opacity: [0,.5,1], y: [-10,0], transition: { duration: .3 } }}
+        >
+          {gameText}
+        </motion.h2>
         <div className='target-board'>
           <TargetBoard/>
         </div>
-        <AnimatePresence exitBeforeEnter>
           <motion.h2 
             className='currentGameScore'
             key={nanoid()}
-            animate={{ scale: [1,1.5,1], transition: {duration: .3} }}
-            exit={{ opacity: [1,0], transition: {duration: .1} }}
+            animate={{ scale: [1,1.5,1], opacity: [0,1], transition: {duration: .3} }}
           > 
             Score: {score}
           </motion.h2>
-        </AnimatePresence>
       </div>
         <div className='board'>
           <Board/>
