@@ -18,13 +18,16 @@
             margin-bottom: 46%;
         }
         .board3x3{
-            @include Exports.styleboard(true, 3, 150px, 600px)
+            @include Exports.styleboard(true, 3, 150px, 600px);
+            cursor: pointer;
         }
         .board4x4{
-            @include Exports.styleboard(true, 4, 150px, 600px)
+            @include Exports.styleboard(true, 4, 150px, 600px);
+            cursor: pointer;
         }
         .board5x5{
-            @include Exports.styleboard(true, 5, 150px, 600px)
+            @include Exports.styleboard(true, 5, 150px, 600px);
+            cursor: pointer;
         }
 
     }

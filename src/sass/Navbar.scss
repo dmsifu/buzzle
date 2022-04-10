@@ -4,13 +4,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     color: white;
-    
+
+    .boints{
+        justify-self: start;
+        align-self: center;
+        list-style: none;
+        margin-left: 7%;
+        font-size: 1.5rem;
+    }
     h1{
         justify-self: center;
         align-self: center;
         font-size: 4.5rem;
     }
-    li{
+    .level-select{
         justify-self: end;
         align-self: center;
         list-style: none;

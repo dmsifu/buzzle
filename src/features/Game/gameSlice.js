@@ -28,13 +28,14 @@ export const gameSlice = createSlice({
                 state.board[emptySpace[0]][emptySpace[1]] =  temp
 
                 let correctSquarePlacement = 0
-                for (let i = 0; i < 3; i++) {
-                    for (let j = 0; j < 3; j++) {
+                for (let i = 0; i < Math.sqrt(state.currentBoardSize); i++) {
+                    for (let j = 0; j < Math.sqrt(state.currentBoardSize); j++) {
                         if(state.board[i][j].color === state.targetBoard[i][j].color){
                             correctSquarePlacement+=1
                         }
                     }
                 }
+                console.log(correctSquarePlacement)
                 if(correctSquarePlacement === state.currentBoardSize){
                     state.board = generateBoard(Math.sqrt(state.currentBoardSize), state.currentGameScore)
                     state.targetBoard = randomizeBoard(state.board)
@@ -82,6 +83,7 @@ export const gameSlice = createSlice({
             state.targetBoard = randomizeBoard(state.board)
             state.boardStyle = `board${size}x${size}`
             state.targetBoardStyle = `target-board${size}x${size}`
+            state.currentGameScore = 0
         }
     }
 })
