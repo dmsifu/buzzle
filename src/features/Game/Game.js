@@ -11,6 +11,8 @@ function Game() {
   const dispatch = useDispatch()
   const score = useSelector(state => state.game.currentGameScore)
   const gameText = useSelector(state=> state.game.gameText)
+  const boardStyle = useSelector(state => state.game.boardStyle)
+  const targetBoardStyle = useSelector(state => state.game.targetBoardStyle)
 
   useEffect(() => {
     dispatch(changeGameText(score))
@@ -26,7 +28,7 @@ function Game() {
         >
           {gameText}
         </motion.h2>
-        <div className='target-board'>
+        <div className={targetBoardStyle}>
           <TargetBoard/>
         </div>
           <motion.h2 
@@ -37,7 +39,7 @@ function Game() {
             Score: {score}
           </motion.h2>
       </div>
-        <div className='board'>
+        <div className={boardStyle}>
           <Board/>
         </div>
     </div>

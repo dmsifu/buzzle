@@ -10,10 +10,12 @@ export const gameSlice = createSlice({
         board: initialBoard,
         targetBoard: initialTargetBoard,
         gameText: "Can you match the boards?",
+        boardStyle: "board3x3",
+        targetBoardStyle: "target-board3x3",
         currentBoardSize: 9,
         currentGameScore: 0,
         totalGlobalScore: 0,
-        isOnLevelSelect: true
+        isOnLevelSelect: false
     },
     reducers: {
         moveBlock: (state, action) => {
@@ -70,10 +72,20 @@ export const gameSlice = createSlice({
         },
         setIsOnLevelSelect: (state, action) =>{
             state.isOnLevelSelect = action.payload
+        },
+        setBoardSize: (state, action) => {
+            state.currentBoardSize = action.payload
+        },
+        setNewBoard: (state) => {
+            let size = Math.sqrt(state.currentBoardSize)
+            state.board = generateBoard(size)
+            state.targetBoard = randomizeBoard(state.board)
+            state.boardStyle = `board${size}x${size}`
+            state.targetBoardStyle = `target-board${size}x${size}`
         }
     }
 })
 
-export const { moveBlock, changeGameText, setIsOnLevelSelect } = gameSlice.actions
+export const { moveBlock, changeGameText, setIsOnLevelSelect, setBoardSize, setNewBoard } = gameSlice.actions
 
 export default gameSlice.reducer

@@ -1,44 +1,4 @@
-@mixin styleboard($isTarget){
-    @if $isTarget{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        border: 1px solid rgb(73, 66, 66);
-        background: rgba(206, 195, 195, 0.3);
-        width: 125px;
-        height: 125px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-        margin-top: -15%;
-
-        .square{
-            border: 1px solid rgb(86, 83, 83, .5);
-            border-radius: 1px;
-            width: 40px;
-            height: 40px;
-            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        }
-    }
-    @else{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        border: 4px solid rgb(73, 66, 66);
-        background: rgba(206, 195, 195, 0.3);
-        width: 605px;
-        height: 605px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-
-        .square{
-            border: 1px solid rgb(86, 83, 83, .5);
-            border-radius: 5px;
-            width: 200px;
-            height: 200px;
-            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-            cursor: pointer;
-            &:hover{
-                border: 1px rgb(255, 255, 255) solid;
-            }
-        }
-    }
-}
+@use 'Exports';
 
 .game{
     display: flex;
@@ -56,8 +16,14 @@
         width: 35%;
         row-gap: 10%;
 
-        .target-board{
-            @include styleboard($isTarget: true)
+        .target-board3x3{
+            @include Exports.styleboard(true, 3, 125px, 600px)
+        }
+        .target-board4x4{
+            @include Exports.styleboard(true, 4, 125px, 600px)
+        }
+        .target-board5x5{
+            @include Exports.styleboard(true, 5, 125px, 600px)
         }
 
         h2{
@@ -67,7 +33,13 @@
         }
     }
 
-    .board{
-        @include styleboard($isTarget: false)
+    .board3x3{
+        @include Exports.styleboard(false, 3, 125px, 600px)
+    }
+    .board4x4{
+        @include Exports.styleboard(false, 4, 150px, 600px)
+    }
+    .board5x5{
+        @include Exports.styleboard(false, 5, 125px, 600px)
     }
 }

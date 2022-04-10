@@ -1,11 +1,13 @@
+@use 'Exports';
+
 .levels{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    column-gap: 5%;
 
     .level{
-
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -13,24 +15,17 @@
         h2{
             color: white;
             font-size: 2rem;
+            margin-bottom: 46%;
         }
-        .board{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            border: 1px solid rgb(73, 66, 66);
-            background: rgba(206, 195, 195, 0.3);
-            width: 125px;
-            height: 125px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-            margin-top: 30%;
-    
-            .square{
-                border: 1px solid rgb(86, 83, 83, .5);
-                border-radius: 1px;
-                width: 40px;
-                height: 40px;
-                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-            }
+        .board3x3{
+            @include Exports.styleboard(true, 3, 150px, 600px)
         }
+        .board4x4{
+            @include Exports.styleboard(true, 4, 150px, 600px)
+        }
+        .board5x5{
+            @include Exports.styleboard(true, 5, 150px, 600px)
+        }
+
     }
 }

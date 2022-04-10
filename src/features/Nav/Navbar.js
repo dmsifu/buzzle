@@ -15,7 +15,7 @@ function Navbar() {
         <h1>Buzzle</h1>
         <motion.li 
           animate={globalScore === 7 ? {scale:[1,1.5,1], rotate: [0,10,-10,10,-10, 0], transition: {duration:1.5}} : {scale: 1, rotate: 0}}
-          onClick={()=>dispatch(setIsOnLevelSelect(false))}
+          onClick={()=>dispatch(setIsOnLevelSelect(true))}
         >
           Level Select
         </motion.li>

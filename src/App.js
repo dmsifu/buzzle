@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="app">
       <Navbar/>
-      {isOnLevelSelect && <Game/> }
-      {!isOnLevelSelect && <Levels/>}
+      {!isOnLevelSelect && <Game/> }
+      {isOnLevelSelect && <Levels/>}
     </div>
   );
 }
