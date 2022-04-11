@@ -11,7 +11,7 @@ Buzzle is a block puzzle game where you have to slide blocks to match a target p
 - Sass
 - HTML
 
-# What I learned
+# A few things I learned
 - Creating a store that contains my reducer slice.
 - Creating a Redux Slice which contains initial state of the game along with all the game actions.
 - Understanding how to provide the store to my react application using Provider.
