@@ -18,16 +18,24 @@
             margin-bottom: 46%;
         }
         .board3x3{
-            @include Exports.styleboard(true, 3, 150px, 600px);
+            @include Exports.styleboard(true, 3);
             cursor: pointer;
         }
         .board4x4{
-            @include Exports.styleboard(true, 4, 150px, 600px);
+            @include Exports.styleboard(true, 4);
             cursor: pointer;
         }
+        .board4x4-locked{
+            filter: blur(10px);
+            @include Exports.styleboard(true, 4);
+        }
         .board5x5{
-            @include Exports.styleboard(true, 5, 150px, 600px);
+            @include Exports.styleboard(true, 5);
             cursor: pointer;
+        }
+        .board5x5-locked{
+            filter: blur(10px);
+            @include Exports.styleboard(true, 5);
         }
 
     }

@@ -10,17 +10,22 @@ import '../../sass/Game.scss'
 function Game() {
   const dispatch = useDispatch()
   const score = useSelector(state => state.game.currentGameScore)
+  const boints = useSelector( state => state.game.totalGlobalScore)
   const gameText = useSelector(state=> state.game.gameText)
   const boardStyle = useSelector(state => state.game.boardStyle)
   const targetBoardStyle = useSelector(state => state.game.targetBoardStyle)
 
   useEffect(() => {
     dispatch(changeGameText(score))
+    localStorage.setItem('boints', boints)
   }, [dispatch, score])
   
-
   return (
-    <div className='game'>
+    <motion.div 
+      className='game'
+      key={nanoid()}
+      animate={{ opacity: [0,1], y: [-100,0] }}
+    >
       <div className='game-details'>
         <motion.h2 
           key={nanoid()}
@@ -42,7 +47,7 @@ function Game() {
         <div className={boardStyle}>
           <Board/>
         </div>
-    </div>
+    </motion.div>
   )
 }
 

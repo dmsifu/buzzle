@@ -9,7 +9,9 @@ function Navbar() {
 
   return (
     <ul className="navbar">
-        <li className='boints'>{`Total Boints: ${globalScore}`}</li>
+        <motion.li className='boints'>
+          {`Total Boints: ${globalScore}`}
+        </motion.li>
         <h1>Buzzle</h1>
         <motion.li 
           className='level-select'

@@ -35,7 +35,6 @@ export const gameSlice = createSlice({
                         }
                     }
                 }
-                console.log(correctSquarePlacement)
                 if(correctSquarePlacement === state.currentBoardSize){
                     state.board = generateBoard(Math.sqrt(state.currentBoardSize), state.currentGameScore)
                     state.targetBoard = randomizeBoard(state.board)
@@ -84,10 +83,13 @@ export const gameSlice = createSlice({
             state.boardStyle = `board${size}x${size}`
             state.targetBoardStyle = `target-board${size}x${size}`
             state.currentGameScore = 0
+        },
+        setTotalGlobalScore: (state, action) => {
+            state.totalGlobalScore = action.payload
         }
     }
 })
 
-export const { moveBlock, changeGameText, setIsOnLevelSelect, setBoardSize, setNewBoard } = gameSlice.actions
+export const { moveBlock, changeGameText, setIsOnLevelSelect, setBoardSize, setNewBoard, setTotalGlobalScore } = gameSlice.actions
 
 export default gameSlice.reducer
