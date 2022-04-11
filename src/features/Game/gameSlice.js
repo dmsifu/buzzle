@@ -50,7 +50,7 @@ export const gameSlice = createSlice({
                         state.gameText = "Nice!"
                         break;
                     case 2:
-                        state.gameText = "Score 7 for a reward :)"
+                        state.gameText = "Score 7 boints for a reward :)"
                         break;
                     case 3:
                         state.gameText = "Red seems like a neat color"
