@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid"
+import { motion } from "framer-motion"
 import { useDispatch, useSelector } from "react-redux"
 import { setIsOnLevelSelect, setBoardSize, setNewBoard } from "../Game/gameSlice"
 
@@ -15,13 +16,13 @@ function LevelCard({size, styleName}) {
   }
 
   return (
-    <div className={boints < 6 && styleName!=='board3x3' ? `${styleName}-locked` : styleName} onClick={levelClicked}>
+    <motion.div className={boints < 6 && styleName!=='board3x3' ? `${styleName}-locked` : styleName} onClick={levelClicked} whileHover={{scale: 1.2}}>
         {size.map(()=>{
             return size.map(()=>{
                 return <div className='square' key={nanoid()}></div>
             })
         })}
-    </div>
+    </motion.div>
   )
 }
 

@@ -14,15 +14,13 @@
     @if $isTarget{
         display: grid;
         grid-template-columns: repeat($numOfColumns, 1fr);
+        width: min(50%,10em);
         border: 1px solid rgb(73, 66, 66);
         background: rgba(206, 195, 195, 0.3);
-        width: 150px;
-        height: 150px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-        margin-top: -15%;
 
         .square{
-            grid-auto-rows: minmax(min-content,max-content);
+            aspect-ratio: 1/1;
             border: 1px solid rgb(86, 83, 83, .5);
             border-radius: 1px;
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -31,8 +29,7 @@
     @else{
         display: grid;
         grid-template-columns: repeat($numOfColumns, 1fr);
-        width: 600px;
-        height: 600px;
+        width: min(70%,35em);
         border: 4px solid rgb(73, 66, 66);
         background: rgba(206, 195, 195, 0.3);
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -40,12 +37,9 @@
         .square{
             border: 1px solid rgb(86, 83, 83, .5);
             border-radius: 5px;
-            grid-auto-rows: minmax(min-content,max-content);
+            aspect-ratio: 1/1;
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             cursor: pointer;
-            &:hover{
-                border: 1px rgb(255, 255, 255) solid;
-            }
         }
     }
 }

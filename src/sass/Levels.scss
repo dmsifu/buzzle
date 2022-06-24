@@ -4,32 +4,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    column-gap: 5%;
+    margin-top: 10%;
 
     .level{
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: min(50%,30em);
+        row-gap: 20px;
 
         h2{
             color: white;
-            font-size: 2rem;
-            margin-bottom: 46%;
+            font-size: clamp(1rem, 4vw + 1rem, 4rem);
         }
         .board3x3{
             @include Exports.styleboard(true, 3);
             cursor: pointer;
-            &:hover{
-                transform: scale(1.2)
-            }
         }
         .board4x4{
             @include Exports.styleboard(true, 4);
             cursor: pointer;
-            &:hover{
-                transform: scale(1.2)
-            }
         }
         .board4x4-locked{
             filter: blur(10px);
@@ -38,14 +32,17 @@
         .board5x5{
             @include Exports.styleboard(true, 5);
             cursor: pointer;
-            &:hover{
-                transform: scale(1.2)
-            }
         }
         .board5x5-locked{
             filter: blur(10px);
             @include Exports.styleboard(true, 5);
         }
 
+    }
+}
+@media (max-width: 800px) {
+    .levels{
+        flex-direction: column;
+        row-gap: 30px;
     }
 }

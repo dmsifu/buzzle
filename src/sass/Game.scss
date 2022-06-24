@@ -4,37 +4,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    column-gap: 5%;
+    margin-top: 5%;
 
     .game-details{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        width: 37%;
-        row-gap: 10%;
+        width: 40%;
+        row-gap: 50px;
 
         .target-board3x3{
-            @include Exports.styleboard(true, 3)
+            @include Exports.styleboard(true, 3);
         }
         .target-board4x4{
-            @include Exports.styleboard(true, 4)
+            @include Exports.styleboard(true, 4);
         }
         .target-board5x5{
-            @include Exports.styleboard(true, 5)
+            @include Exports.styleboard(true, 5);
         }
 
         h2{
-            margin-bottom: 12%;
-            font-size: 2.5rem;
+            font-size: clamp(.7rem, 2vw + .7rem, 2.5rem);
             color: white;
         }
     }
 
     .board3x3{
-        @include Exports.styleboard(false, 3)
+        @include Exports.styleboard(false, 3);
     }
     .board4x4{
         @include Exports.styleboard(false, 4)
@@ -47,6 +44,10 @@
 @media (max-width: 800px) {
     .game{
         flex-direction: column;
-        padding-top: 10%;
+
+        .game-details{
+            width: 70%;
+            margin-bottom: 20%;
+        }
     }
 }

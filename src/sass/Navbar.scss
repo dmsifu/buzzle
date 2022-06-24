@@ -1,8 +1,8 @@
 .navbar{
-    position: absolute;
+    display: flex;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     color: white;
 
     .boints{
@@ -10,19 +10,23 @@
         align-self: center;
         list-style: none;
         margin-left: 7%;
-        font-size: 1.5rem;
+        font-size: clamp(.5rem, 2vw + .3rem, 1.5rem);
     }
     h1{
         justify-self: center;
         align-self: center;
-        font-size: 4.5rem;
+        font-size: clamp(2rem, 4vw + 1rem, 4.5rem);
     }
     .level-select{
         justify-self: end;
         align-self: center;
         list-style: none;
         margin-right: 7%;
-        font-size: 1.5rem;
+        font-size: clamp(.5rem, 2vw + .3rem, 1.5rem);
         cursor: pointer;
+    }
+
+    .buzzle{
+        display: flex;
     }
 }

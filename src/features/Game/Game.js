@@ -21,28 +21,17 @@ function Game() {
   }, [dispatch, score])
   
   return (
-    <motion.div 
-      className='game'
-      key={nanoid()}
-      animate={{ opacity: [0,1], y: [-100,0] }}
-    >
+    <motion.div className='game' key={nanoid()} animate={{ opacity: [0,1], y: [-100,0] }}>
       <div className='game-details'>
-        <motion.h2 
-          key={nanoid()}
-          animate={{ opacity: [0,.5,1], y: [-10,0], transition: { duration: .3 } }}
-        >
+        <motion.h2 key={nanoid()} animate={{ opacity: [0,.5,1], y: [-10,0], transition: { duration: .3 } }}>
           {gameText}
+        </motion.h2>
+        <motion.h2 className='currentGameScore' key={nanoid()} animate={{ scale: [1,1.5,1], opacity: [0,1], transition: {duration: .3} }}> 
+          Score: {score}
         </motion.h2>
         <div className={targetBoardStyle}>
           <TargetBoard/>
         </div>
-          <motion.h2 
-            className='currentGameScore'
-            key={nanoid()}
-            animate={{ scale: [1,1.5,1], opacity: [0,1], transition: {duration: .3} }}
-          > 
-            Score: {score}
-          </motion.h2>
       </div>
         <div className={boardStyle}>
           <Board/>

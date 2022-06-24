@@ -8,7 +8,6 @@ function Board() {
 
   function squareClicked(e, id){
     dispatch(moveBlock(id))
-    let squareLocation = e.target.getBoundingClientRect()
   }
 
   return (
@@ -26,6 +25,7 @@ function Board() {
                     onClick={(e)=>squareClicked(e,square.id)} 
                     style={{ backgroundColor: square.color }}
                     animate={{ opacity: [0,1], transition: {delay: i/5}}}
+                    whileHover={{ border: '2px rgb(255, 255, 255) solid'}}
                   >
                   </motion.div>
               )
